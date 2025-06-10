@@ -1,0 +1,599 @@
+{% extends 'base.html' %}
+
+{% block title %}Регистрация{% endblock %}
+
+{% block content %}
+<div class="auth-container">
+    <div class="auth-form">
+        <div class="auth-header">
+            <h1 class="page-title">Создать аккаунт</h1>
+            <p>Заполните форму ниже, чтобы создать новый аккаунт</p>
+        </div>
+
+        <form method="post" class="modern-form">
+            {% csrf_token %}
+
+            <!-- Имя пользователя -->
+            <div class="form-group floating-label">
+                <input type="text" id="username" name="username" required class="form-control" placeholder=" " autocomplete="username">
+                <label for="username">Имя пользователя</label>
+                <div class="underline"></div>
+            </div>
+
+            <div class="form-row">
+                <!-- Имя -->
+                <div class="form-group floating-label">
+                    <input type="text" id="first_name" name="first_name" class="form-control" placeholder=" " autocomplete="given-name">
+                    <label for="first_name">Имя</label>
+                    <div class="underline"></div>
+                </div>
+
+                <!-- Фамилия -->
+                <div class="form-group floating-label">
+                    <input type="text" id="last_name" name="last_name" class="form-control" placeholder=" " autocomplete="family-name">
+                    <label for="last_name">Фамилия</label>
+                    <div class="underline"></div>
+                </div>
+            </div>
+
+            <!-- Email -->
+            <div class="form-group floating-label">
+                <input type="email" id="email" name="email" required class="form-control" placeholder=" " autocomplete="email">
+                <label for="email">Email</label>
+                <div class="underline"></div>
+            </div>
+
+            <div class="form-row">
+                <!-- Пароль -->
+                <div class="form-group floating-label">
+                    <input type="password" id="password1" name="password1" required class="form-control" placeholder=" " autocomplete="new-password">
+                    <label for="password1">Пароль</label>
+                    <div class="underline"></div>
+                </div>
+
+                <!-- Подтверждение пароля -->
+                <div class="form-group floating-label">
+                    <input type="password" id="password2" name="password2" required class="form-control" placeholder=" " autocomplete="new-password">
+                    <label for="password2">Подтверждение пароля</label>
+                    <div class="underline"></div>
+                </div>
+            </div>
+
+            <!-- Условия соглашения -->
+            <div class="form-group terms">
+                <div class="terms-container">
+                    <input type="checkbox" id="terms" name="terms" required>
+                    <label for="terms">Я принимаю <a href="#">условия использования</a> и согласен с <a href="#">политикой конфиденциальности</a></label>
+                </div>
+            </div>
+
+            <!-- Кнопка регистрации -->
+            <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+
+            <!-- Разделитель -->
+            <div class="auth-divider">
+                <span>или</span>
+            </div>
+
+            <!-- Социальные сети -->
+            <div class="social-auth">
+                <a href="#" class="btn btn-social google">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24">
+                        <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"></path>
+                        <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"></path>
+                        <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"></path>
+                        <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"></path>
+                    </svg>
+                    Зарегистрироваться через Google
+                </a>
+                <a href="#" class="btn btn-social vk">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24">
+                        <path fill="white" d="M15.07 2H8.93C3.33 2 2 3.33 2 8.93v6.14C2 20.67 3.33 22 8.93 22h6.14c5.6 0 6.93-1.33 6.93-6.93V8.93C22 3.33 20.67 2 15.07 2zm1.76 15.39c-.41.11-1.09-.22-1.59-.62-.24-.19-.58-.52-.95-.93-.75-.82-1.3-1.35-1.93-1.23-.36.07-.58.45-.58 1.25H11c0-1.97.5-2.92 1.54-3.11.76-.14 1.24.3 1.56.61.52.51.86.84 1.02 1.02.58.67 1.03.61 1.03.61l1.47-.19c.06 0 .12-.01.17-.03.35-.1.57-.33.65-.69.09-.38-.05-.84-.42-1.39-.34-.5-.97-1.05-1.07-1.13-.09-.08-.73-.73-.71-1.25.01-.27.15-.52.4-.67.28-.17.65-.18.9-.11.25.07.49.3.67.58.18.29.59 1.06.65 1.15.06.09.13.21.19.33.09.21.04.38-.03.51-.11.21-.29.38-.5.55-.17.14-.36.28-.5.41-.15.13-.29.35-.1.67.19.31.84 1.02 1.01 1.22.17.2.29.42.33.57.04.15.01.46-.41.57z"></path>
+                    </svg>
+                    Зарегистрироваться через ВКонтакте
+                </a>
+            </div>
+
+            <div class="auth-footer">
+                Уже есть аккаунт? <a href="{% url 'login' %}">Войти</a>
+            </div>
+        </form>
+    </div>
+
+    <div class="auth-benefits">
+        <h2>Преимущества регистрации</h2>
+
+        <div class="benefits-grid">
+            <div class="benefit-card">
+                <div class="benefit-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                        <line x1="16" y1="13" x2="8" y2="13"></line>
+                        <line x1="16" y1="17" x2="8" y2="17"></line>
+                        <polyline points="10 9 9 9 8 9"></polyline>
+                    </svg>
+                </div>
+                <h3>История заказов</h3>
+                <p>Доступ ко всем вашим предыдущим заказам и ремонтам</p>
+            </div>
+
+            <div class="benefit-card">
+                <div class="benefit-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                </div>
+                <h3>Быстрое оформление</h3>
+                <p>Сохраненные данные для быстрого оформления новых заявок</p>
+            </div>
+
+            <div class="benefit-card">
+                <div class="benefit-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 20h9"></path>
+                        <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+                    </svg>
+                </div>
+                <h3>Персональные скидки</h3>
+                <p>Эксклюзивные предложения и скидки для зарегистрированных пользователей</p>
+            </div>
+
+            <div class="benefit-card">
+                <div class="benefit-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                        <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                        <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                    </svg>
+                </div>
+                <h3>Отслеживание статуса</h3>
+                <p>Контроль состояния ваших заявок в реальном времени</p>
+            </div>
+        </div>
+
+        <div class="security-section">
+            <h3>Безопасность ваших данных</h3>
+            <p>Мы используем современные методы шифрования для защиты вашей личной информации</p>
+
+            <div class="security-features">
+                <div class="security-feature">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                        <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                    </svg>
+                    <span>256-битное шифрование</span>
+                </div>
+
+                <div class="security-feature">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" y1="8" x2="12" y2="12"></line>
+                        <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                    </svg>
+                    <span>Двухфакторная аутентификация</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .auth-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px 0;
+    }
+
+    .auth-form {
+        background: var(--white);
+        padding: 40px;
+        border-radius: 8px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    }
+
+    .auth-header {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .auth-header h1 {
+        font-size: 2.2rem;
+        margin-bottom: 10px;
+    }
+
+    .auth-header p {
+        color: #666;
+        font-size: 1.1rem;
+    }
+
+    .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+
+    .floating-label {
+        position: relative;
+        margin-bottom: 2.5rem;
+    }
+
+    .floating-label label {
+        position: absolute;
+        top: 18px;
+        left: 15px;
+        font-size: 1rem;
+        color: #777;
+        pointer-events: none;
+        transition: all 0.3s ease;
+        transform-origin: left top;
+    }
+
+    .floating-label input {
+        width: 100%;
+        padding: 25px 15px 10px;
+        border: none;
+        border-radius: 0;
+        background: transparent;
+        font-family: 'Inter', sans-serif;
+        font-size: 1.05rem;
+        border-bottom: 1px solid #ddd;
+        transition: all 0.3s ease;
+    }
+
+    .floating-label input:focus {
+        outline: none;
+        border-bottom-color: transparent;
+    }
+
+    .floating-label input:focus + label,
+    .floating-label input:not(:placeholder-shown) + label {
+        transform: translateY(-12px) scale(0.85);
+        color: var(--black);
+    }
+
+    .underline {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--black);
+        transition: width 0.4s ease;
+    }
+
+    .floating-label input:focus ~ .underline {
+        width: 100%;
+    }
+
+    .form-hint {
+        font-size: 0.9rem;
+        color: #666;
+        margin-top: 5px;
+    }
+
+    .terms {
+        margin: 30px 0;
+    }
+
+    .terms-container {
+        display: flex;
+        align-items: flex-start;
+    }
+
+    .terms-container input {
+        margin-top: 5px;
+        margin-right: 12px;
+        min-width: 18px;
+        min-height: 18px;
+        border: 1px solid #ddd;
+        border-radius: 3px;
+    }
+
+    .terms-container label {
+        color: #555;
+        font-size: 0.95rem;
+        line-height: 1.5;
+    }
+
+    .terms-container a {
+        color: var(--black);
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    .terms-container a:hover {
+        text-decoration: underline;
+    }
+
+    .btn-primary {
+        width: 100%;
+        padding: 14px;
+        font-size: 1.1rem;
+        font-weight: 500;
+        background: var(--black);
+        color: var(--white);
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .btn-primary:hover {
+        background: var(--gray-dark);
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .auth-divider {
+        position: relative;
+        margin: 30px 0;
+        text-align: center;
+    }
+
+    .auth-divider::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: #eee;
+        z-index: 1;
+    }
+
+    .auth-divider span {
+        position: relative;
+        background: var(--white);
+        padding: 0 15px;
+        z-index: 2;
+        color: #666;
+        font-size: 0.95rem;
+    }
+
+    .social-auth {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-bottom: 20px;
+    }
+
+    .btn-social {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        padding: 12px;
+        border-radius: 4px;
+        font-weight: 500;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+    }
+
+    .btn-social.google {
+        background: #fff;
+        color: #333;
+        border: 1px solid #ddd;
+    }
+
+    .btn-social.google:hover {
+        background: #f8f8f8;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+
+    .btn-social.vk {
+        background: #4a76a8;
+        color: #fff;
+        border: 1px solid #4a76a8;
+    }
+
+    .btn-social.vk:hover {
+        background: #3d6894;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .auth-footer {
+        text-align: center;
+        margin-top: 20px;
+        color: #666;
+        font-size: 1rem;
+    }
+
+    .auth-footer a {
+        color: var(--black);
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    .auth-footer a:hover {
+        text-decoration: underline;
+    }
+
+    .auth-benefits {
+        background: var(--white);
+        padding: 40px;
+        border-radius: 8px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    }
+
+    .auth-benefits h2 {
+        font-size: 1.8rem;
+        margin-bottom: 30px;
+        text-align: center;
+        position: relative;
+        padding-bottom: 15px;
+    }
+
+    .auth-benefits h2::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 3px;
+        background: var(--black);
+    }
+
+    .benefits-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+        margin-bottom: 40px;
+    }
+
+    .benefit-card {
+        text-align: center;
+        padding: 25px 20px;
+        background: #f9f9f9;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+    }
+
+    .benefit-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+        background: var(--white);
+    }
+
+    .benefit-icon {
+        width: 70px;
+        height: 70px;
+        margin: 0 auto 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(0,0,0,0.03);
+        border-radius: 50%;
+    }
+
+    .benefit-icon svg {
+        color: var(--black);
+    }
+
+    .benefit-card h3 {
+        font-size: 1.3rem;
+        margin-bottom: 15px;
+    }
+
+    .benefit-card p {
+        color: #666;
+        line-height: 1.5;
+        font-size: 0.95rem;
+    }
+
+    .security-section {
+        padding: 25px;
+        background: #f9f9f9;
+        border-radius: 8px;
+    }
+
+    .security-section h3 {
+        font-size: 1.4rem;
+        margin-bottom: 15px;
+    }
+
+    .security-section p {
+        color: #666;
+        margin-bottom: 20px;
+    }
+
+    .security-features {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 15px;
+    }
+
+    .security-feature {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px 15px;
+        background: #fff;
+        border-radius: 6px;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    }
+
+    .security-feature svg {
+        color: var(--black);
+        min-width: 24px;
+    }
+
+    @media (max-width: 992px) {
+        .auth-container {
+            grid-template-columns: 1fr;
+        }
+
+        .auth-form, .auth-benefits {
+            padding: 30px;
+        }
+
+        .form-row {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Инициализация плавающих меток
+        const floatInputs = document.querySelectorAll('.floating-label input');
+        floatInputs.forEach(input => {
+            input.addEventListener('focus', function() {
+                this.parentElement.querySelector('label').style.transform = 'translateY(-12px) scale(0.85)';
+                this.parentElement.querySelector('label').style.color = 'var(--black)';
+            });
+
+            input.addEventListener('blur', function() {
+                if (!this.value) {
+                    this.parentElement.querySelector('label').style.transform = '';
+                    this.parentElement.querySelector('label').style.color = '';
+                }
+            });
+
+            // Инициализация для заполненных полей
+            if (input.value) {
+                input.parentElement.querySelector('label').style.transform = 'translateY(-12px) scale(0.85)';
+                input.parentElement.querySelector('label').style.color = 'var(--black)';
+            }
+        });
+
+        // Валидация паролей
+        const password1 = document.getElementById('password1');
+        const password2 = document.getElementById('password2');
+
+        function validatePasswords() {
+            if (password1.value !== password2.value) {
+                password2.parentElement.classList.add('error');
+                password2.setCustomValidity('Пароли не совпадают');
+            } else {
+                password2.parentElement.classList.remove('error');
+                password2.setCustomValidity('');
+            }
+        }
+
+        password1.addEventListener('input', validatePasswords);
+        password2.addEventListener('input', validatePasswords);
+
+        // Анимация при наведении на кнопки
+        const buttons = document.querySelectorAll('.btn');
+        buttons.forEach(button => {
+            button.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-2px)';
+                this.style.boxShadow = '0 5px 15px rgba(0,0,0,0.1)';
+            });
+
+            button.addEventListener('mouseleave', function() {
+                this.style.transform = '';
+                this.style.boxShadow = '';
+            });
+        });
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,222 @@
+{% extends 'base.html' %}
+
+{% block title %}Главная страница{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <div class="hero-content">
+        <h1>Профессиональный сервис для вашей техники</h1>
+        <p>Ремонт, покупка, продажа и сборка компьютеров по индивидуальным требованиям</p>
+        <a href="#services" class="btn btn-primary">Наши услуги</a>
+    </div>
+</section>
+
+<section id="services" class="services-section">
+    <h2 class="section-title">Наши услуги</h2>
+    <div class="services-grid">
+        <a href="{% url 'sell' %}" class="service-card">
+            <div class="card-content">
+                <h3>Продать технику</h3>
+                <p>Оценим и выкупим вашу б/у технику по выгодной цене</p>
+            </div>
+        </a>
+
+        <a href="{% url 'repair' %}" class="service-card">
+            <div class="card-content">
+                <h3>Ремонт техники</h3>
+                <p>Быстрый и качественный ремонт любой сложности</p>
+            </div>
+        </a>
+
+        <a href="{% url 'buy' %}" class="service-card">
+            <div class="card-content">
+                <h3>Купить б/у технику</h3>
+                <p>Проверенная техника с гарантией по доступным ценам</p>
+            </div>
+        </a>
+
+        <a href="{% url 'build_pc' %}" class="service-card">
+            <div class="card-content">
+                <h3>Сборка ПК</h3>
+                <p>Индивидуальные сборки под ваши задачи и бюджет</p>
+            </div>
+        </a>
+    </div>
+</section>
+
+<section class="advantages">
+    <h2 class="section-title">Почему выбирают нас</h2>
+    <div class="advantages-grid">
+        <div class="advantage-card">
+            <h3>Профессионализм</h3>
+            <p>Опытные специалисты с 10+ летним стажем работы</p>
+        </div>
+        <div class="advantage-card">
+            <h3>Гарантия</h3>
+            <p>На все услуги и товары предоставляем гарантию</p>
+        </div>
+        <div class="advantage-card">
+            <h3>Быстрота</h3>
+            <p>Срочный ремонт и оперативная оценка техники</p>
+        </div>
+        <div class="advantage-card">
+            <h3>Качество</h3>
+            <p>Используем только проверенные компоненты</p>
+        </div>
+    </div>
+</section>
+
+<style>
+    .hero {
+        background-image:
+            linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+            url('https://via.placeholder.com/1920x600/333333/CCCCCC?text=Mirkom');
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        height: 500px;
+        display: flex;
+        align-items: center;
+        color: white;
+        margin-bottom: 4rem;
+    }
+
+    .hero-content {
+        max-width: 600px;
+        padding: 0 20px;
+    }
+
+    .hero h1 {
+        font-size: 2.8rem;
+        margin-bottom: 1.5rem;
+        line-height: 1.2;
+    }
+
+    .hero p {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+        opacity: 0.9;
+    }
+
+    .section-title {
+        font-size: 2rem;
+        text-align: center;
+        margin-bottom: 3rem;
+        position: relative;
+        padding-bottom: 15px;
+    }
+
+    .section-title::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 3px;
+        background: var(--black);
+    }
+
+    .services-grid, .advantages-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+    }
+
+    .service-card {
+        background: var(--white);
+        border: 1px solid #eee;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        transition: all 0.3s ease;
+        text-decoration: none;
+        color: inherit;
+        height: 100%;
+    }
+
+    .service-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    }
+
+    .card-content {
+        padding: 30px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .service-card h3 {
+        font-size: 1.4rem;
+        margin-bottom: 15px;
+        position: relative;
+        padding-bottom: 10px;
+    }
+
+    .service-card h3::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 40px;
+        height: 2px;
+        background: var(--black);
+    }
+
+    .service-card p {
+        color: var(--gray-dark);
+        line-height: 1.5;
+    }
+
+    .advantages {
+        background: var(--gray-light);
+        padding: 4rem 0;
+        margin-top: 4rem;
+    }
+
+    .advantage-card {
+        background: var(--white);
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+
+    .advantage-card h3 {
+        font-size: 1.3rem;
+        margin-bottom: 15px;
+        position: relative;
+        padding-bottom: 10px;
+    }
+
+    .advantage-card h3::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 30px;
+        height: 2px;
+        background: var(--black);
+    }
+
+    .advantage-card p {
+        color: var(--gray-dark);
+    }
+
+    @media (max-width: 768px) {
+        .hero {
+            height: 400px;
+            text-align: center;
+        }
+
+        .hero-content {
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+        }
+    }
+</style>
+{% endblock %}
